@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.application.innova.web.stock.StockEdit"
+        datasource="stockDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.application.innova.web.stock">
+    <dsContext>
+        <datasource id="stockDs"
+                    class="com.application.innova.entity.Stock"
+                    view="stock-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="stockDs">
+            <column width="250px">
+                <field property="name"
+                       required="true"/>
+                <field property="quantity"
+                       required="true"/>
+                <field property="company"
+                       required="true"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

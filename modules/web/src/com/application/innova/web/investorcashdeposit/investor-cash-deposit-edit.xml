@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.application.innova.web.investorcashdeposit.InvestorCashDepositEdit"
+        datasource="investorCashDepositDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.application.innova.web.investorcashdeposit">
+    <dsContext>
+        <datasource id="investorCashDepositDs"
+                    class="com.application.innova.entity.InvestorCashDeposit"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="investorCashDepositDs">
+            <column width="250px">
+                <field property="narrative"/>
+                <field property="cashAmount"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

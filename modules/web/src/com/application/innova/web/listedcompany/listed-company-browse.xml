@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.application.innova.web.listedcompany.ListedCompanyBrowse"
+        focusComponent="listedCompaniesTable"
+        lookupComponent="listedCompaniesTable"
+        messagesPack="com.application.innova.web.listedcompany">
+    <dsContext>
+        <groupDatasource id="listedCompaniesDs"
+                         class="com.application.innova.entity.ListedCompany"
+                         view="_local">
+            <query>
+                <![CDATA[select e from innova$ListedCompany e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="listedCompaniesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="listedCompaniesTable"
+                datasource="listedCompaniesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="listedCompaniesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="symbol"/>
+            </columns>
+            <rows datasource="listedCompaniesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="listedCompaniesTable.create"/>
+                <button id="editBtn"
+                        action="listedCompaniesTable.edit"/>
+                <button id="removeBtn"
+                        action="listedCompaniesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

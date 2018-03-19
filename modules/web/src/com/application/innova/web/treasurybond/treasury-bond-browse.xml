@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.application.innova.web.treasurybond.TreasuryBondBrowse"
+        focusComponent="treasuryBondsTable"
+        lookupComponent="treasuryBondsTable"
+        messagesPack="com.application.innova.web.treasurybond">
+    <dsContext>
+        <groupDatasource id="treasuryBondsDs"
+                         class="com.application.innova.entity.TreasuryBond"
+                         view="treasuryBond-view">
+            <query>
+                <![CDATA[select e from innova$TreasuryBond e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="treasuryBondsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="treasuryBondsTable"
+                datasource="treasuryBondsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="treasuryBondsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="faceValue"/>
+                <column id="bondType"/>
+            </columns>
+            <rows datasource="treasuryBondsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="treasuryBondsTable.create"/>
+                <button id="editBtn"
+                        action="treasuryBondsTable.edit"/>
+                <button id="removeBtn"
+                        action="treasuryBondsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

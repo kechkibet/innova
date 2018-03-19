@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.application.innova.web.treasurybondstypes.TreasuryBondsTypesEdit"
+        datasource="treasuryBondsTypesDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.application.innova.web.treasurybondstypes">
+    <dsContext>
+        <datasource id="treasuryBondsTypesDs"
+                    class="com.application.innova.entity.TreasuryBondsTypes"
+                    view="treasuryBondsTypes-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="treasuryBondsTypesDs">
+            <column width="250px">
+                <field property="dated"/>
+                <field property="due"/>
+                <field property="redeemableDate"/>
+                <field property="scannedCopy"/>
+                <field property="currency"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

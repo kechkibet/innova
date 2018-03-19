@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.application.innova.entity.TreasuryBondsTypes"
+          extends="_local"
+          name="treasuryBondsTypes-view">
+        <property name="scannedCopy"
+                  view="_minimal"/>
+    </view>
+    <view class="com.application.innova.entity.Investor"
+          extends="_local"
+          name="investor-view">
+        <property name="cashAccountTransactions"
+                  view="_minimal"/>
+        <property name="holdings"
+                  view="_minimal">
+            <property name="tradeValue"/>
+        </property>
+    </view>
+    <view class="com.application.innova.entity.Stock"
+          extends="_local"
+          name="stock-view">
+        <property name="company"
+                  view="_minimal"/>
+    </view>
+    <view class="com.application.innova.entity.TreasuryBond"
+          extends="_local"
+          name="treasuryBond-view">
+        <property name="bondType"
+                  view="_minimal">
+            <property name="currency"/>
+        </property>
+    </view>
+    <view class="com.application.innova.entity.InvestorHoldings"
+          extends="_local"
+          name="investorHoldings-view">
+        <property name="investor"
+                  view="_minimal"/>
+        <property name="security"
+                  view="_minimal"/>
+    </view>
+</views>

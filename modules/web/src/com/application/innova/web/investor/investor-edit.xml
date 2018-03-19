@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.application.innova.web.investor.InvestorEdit"
+        datasource="investorDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.application.innova.web.investor">
+    <dsContext>
+        <datasource id="investorDs"
+                    class="com.application.innova.entity.Investor"
+                    view="investor-view">
+            <collectionDatasource id="cashAccountTransactionsDs"
+                                  property="cashAccountTransactions"/>
+            <collectionDatasource id="holdingsDs"
+                                  property="holdings"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="investorDs">
+            <column width="250px">
+                <field property="name"/>
+                <field editable="false"
+                       property="cashAccountBalance"/>
+            </column>
+        </fieldGroup>
+        <tabSheet>
+            <tab id="tab"
+                 caption="Cash Transactions"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="cashAccountTransactionsBox"
+                          caption="msg://com.application.innova.entity/Investor.cashAccountTransactions">
+                    <table id="cashAccountTransactionsTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="narrative"/>
+                            <column id="cashAmount"/>
+                        </columns>
+                        <rows datasource="cashAccountTransactionsDs"/>
+                        <buttonsPanel>
+                            <button action="cashAccountTransactionsTable.create"/>
+                            <button action="cashAccountTransactionsTable.edit"/>
+                            <button action="cashAccountTransactionsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab id="tab_1"
+                 caption="Holdings"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="holdingsBox"
+                          caption="msg://com.application.innova.entity/Investor.holdings">
+                    <table id="holdingsTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="security"/>
+                            <column id="tradeValue"/>
+                        </columns>
+                        <rows datasource="holdingsDs"/>
+                        <buttonsPanel>
+                            <button action="holdingsTable.create"/>
+                            <button action="holdingsTable.edit"/>
+                            <button action="holdingsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

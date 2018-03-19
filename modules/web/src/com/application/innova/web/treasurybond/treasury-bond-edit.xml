@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.application.innova.web.treasurybond.TreasuryBondEdit"
+        datasource="treasuryBondDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.application.innova.web.treasurybond">
+    <dsContext>
+        <datasource id="treasuryBondDs"
+                    class="com.application.innova.entity.TreasuryBond"
+                    view="treasuryBond-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="treasuryBondDs">
+            <column width="250px">
+                <field property="name"
+                       required="true"/>
+                <field property="faceValue"
+                       required="true"/>
+                <field property="bondType"
+                       required="true"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

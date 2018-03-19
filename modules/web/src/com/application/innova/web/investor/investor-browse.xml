@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.application.innova.web.investor.InvestorBrowse"
+        focusComponent="investorsTable"
+        lookupComponent="investorsTable"
+        messagesPack="com.application.innova.web.investor">
+    <dsContext>
+        <groupDatasource id="investorsDs"
+                         class="com.application.innova.entity.Investor"
+                         view="investor-view">
+            <query>
+                <![CDATA[select e from innova$Investor e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="investorsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="investorsTable"
+                datasource="investorsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="investorsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="cashAccountBalance"/>
+            </columns>
+            <rows datasource="investorsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="investorsTable.create"/>
+                <button id="editBtn"
+                        action="investorsTable.edit"/>
+                <button id="removeBtn"
+                        action="investorsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

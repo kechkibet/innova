@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.application.innova.web.stock.StockBrowse"
+        focusComponent="stocksTable"
+        lookupComponent="stocksTable"
+        messagesPack="com.application.innova.web.stock">
+    <dsContext>
+        <groupDatasource id="stocksDs"
+                         class="com.application.innova.entity.Stock"
+                         view="stock-view">
+            <query>
+                <![CDATA[select e from innova$Stock e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="stocksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="stocksTable"
+                datasource="stocksDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="stocksTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="quantity"/>
+                <column id="company"/>
+            </columns>
+            <rows datasource="stocksDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="stocksTable.create"/>
+                <button id="editBtn"
+                        action="stocksTable.edit"/>
+                <button id="removeBtn"
+                        action="stocksTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

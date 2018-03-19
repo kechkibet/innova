@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+    <persistence-unit name="innova"
+                      transaction-type="RESOURCE_LOCAL">
+        <class>com.application.innova.entity.Investor</class>
+        <class>com.application.innova.entity.Security</class>
+        <class>com.application.innova.entity.Stock</class>
+        <class>com.application.innova.entity.ListedCompany</class>
+        <class>com.application.innova.entity.TreasuryBond</class>
+        <class>com.application.innova.entity.TreasuryBondsTypes</class>
+        <class>com.application.innova.entity.InvestorCashDeposit</class>
+        <class>com.application.innova.entity.InvestorHoldings</class>
+    </persistence-unit>
+</persistence>

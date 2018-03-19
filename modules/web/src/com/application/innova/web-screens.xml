@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/application/innova/screens.xml"/>
+    <screen id="innova$TreasuryBondsTypes.browse"
+            template="com/application/innova/web/treasurybondstypes/treasury-bonds-types-browse.xml"/>
+    <screen id="innova$TreasuryBondsTypes.edit"
+            template="com/application/innova/web/treasurybondstypes/treasury-bonds-types-edit.xml"/>
+    <screen id="innova$ListedCompany.browse"
+            template="com/application/innova/web/listedcompany/listed-company-browse.xml"/>
+    <screen id="innova$ListedCompany.edit"
+            template="com/application/innova/web/listedcompany/listed-company-edit.xml"/>
+    <screen id="innova$Stock.browse"
+            template="com/application/innova/web/stock/stock-browse.xml"/>
+    <screen id="innova$Stock.edit"
+            template="com/application/innova/web/stock/stock-edit.xml"/>
+    <screen id="innova$TreasuryBond.browse"
+            template="com/application/innova/web/treasurybond/treasury-bond-browse.xml"/>
+    <screen id="innova$TreasuryBond.edit"
+            template="com/application/innova/web/treasurybond/treasury-bond-edit.xml"/>
+    <screen id="innova$Investor.browse"
+            template="com/application/innova/web/investor/investor-browse.xml"/>
+    <screen id="innova$Investor.edit"
+            template="com/application/innova/web/investor/investor-edit.xml"/>
+    <screen id="innova$InvestorCashDeposit.edit"
+            template="com/application/innova/web/investorcashdeposit/investor-cash-deposit-edit.xml"/>
+    <screen id="innova$InvestorHoldings.edit"
+            template="com/application/innova/web/investorholdings/investor-holdings-edit.xml"/>
+    <screen id="innova$Security.browse"
+            template="com/application/innova/web/security/security-browse.xml"/>
+</screen-config>

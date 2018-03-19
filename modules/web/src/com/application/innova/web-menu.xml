@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-innova"
+          insertBefore="administration">
+        <item screen="innova$TreasuryBondsTypes.browse"/>
+        <item screen="innova$ListedCompany.browse"/>
+        <item screen="innova$Stock.browse"/>
+        <item screen="innova$TreasuryBond.browse"/>
+        <item screen="innova$Investor.browse"/>
+        <item screen="innova$Security.browse"/>
+    </menu>
+</menu-config>
