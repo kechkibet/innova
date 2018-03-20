@@ -23,7 +23,7 @@ public class TreasuryBondEdit extends AbstractEditor<TreasuryBond> {
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
-        treasuryBondDs.addItemChangeListener(e -> {
+        treasuryBondDs.addItemPropertyChangeListener(e -> {
             TreasuryBond treasuryBond = e.getItem();
 
             treasuryBond.setName("Security type: Tbond, Currency:"+treasuryBond.getBondType().getCurrency()+" Face value: "+treasuryBond.getFaceValue());

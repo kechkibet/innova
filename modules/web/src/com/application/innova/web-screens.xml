@@ -23,8 +23,8 @@
             template="com/application/innova/web/investor/investor-edit.xml"/>
     <screen id="innova$InvestorCashDeposit.edit"
             template="com/application/innova/web/investorcashdeposit/investor-cash-deposit-edit.xml"/>
-    <screen id="innova$InvestorHoldings.edit"
-            template="com/application/innova/web/investorholdings/investor-holdings-edit.xml"/>
     <screen id="innova$Security.browse"
             template="com/application/innova/web/security/security-browse.xml"/>
+    <screen id="innova$InvestorHoldings.edit"
+            template="com/application/innova/web/investorholdings/investor-holdings-edit.xml"/>
 </screen-config>

@@ -1,20 +1,24 @@
 package com.application.innova.web.investorholdings;
 
+import com.application.innova.entity.*;
+import com.haulmont.cuba.core.app.DataService;
+import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.AbstractEditor;
-import com.application.innova.entity.InvestorHoldings;
 import com.haulmont.cuba.gui.components.TextField;
 import com.haulmont.cuba.gui.data.Datasource;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 import java.util.Map;
 
 public class InvestorHoldingsEdit extends AbstractEditor<InvestorHoldings> {
-    @Named("fieldGroup.tradeValue")
-    private TextField tradeValueField;
     @Inject
     private Datasource<InvestorHoldings> investorHoldingsDs;
+    @Inject
+    private DataManager dataManager;
 
     /**
      * Called by the framework after creation of all components and before showing the screen.
@@ -27,10 +31,41 @@ public class InvestorHoldingsEdit extends AbstractEditor<InvestorHoldings> {
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
-        investorHoldingsDs.addItemChangeListener(e -> {
+        investorHoldingsDs.addItemPropertyChangeListener(e -> {
             InvestorHoldings investorHoldings = e.getItem();
-            //investorHoldings.setTradeValue(investorHoldings.getSecurity().get);\
-            //check if security type is stock or tbond and set trade value accordingly
+            //set the default trade status here...
+            investorHoldings.setTradeStatus(TradeStatus.Order_Received);
+
+            if (investorHoldings.getSecurity()!=null && investorHoldings.getPrice()!= null){
+
+                if (investorHoldings.getSecurity() instanceof Stock) {
+                    //Stock stock = (Stock) investorHoldings.getSecurity();
+                    LoadContext<Stock> stockLoadContext = LoadContext.create(Stock.class).setId(investorHoldings.getSecurity().getId()).setView("_local");
+
+                    Stock stock = dataManager.load(stockLoadContext);
+                    investorHoldings.setTradeValue(stock.getQuantity()*investorHoldings.getPrice());
+                }
+                if (investorHoldings.getSecurity() instanceof TreasuryBond) {
+                    //TreasuryBond treasuryBond = (TreasuryBond) investorHoldings.getSecurity();
+                    LoadContext<TreasuryBond> treasuryBondLoadContext = LoadContext.create(TreasuryBond.class).setId(investorHoldings.getSecurity().getId()).setView("_local");
+
+                     TreasuryBond treasuryBond= dataManager.load(treasuryBondLoadContext);
+                    investorHoldings.setTradeValue(treasuryBond.getFaceValue()*investorHoldings.getPrice());
+                }
+            }
         });
+    }
+
+    /**
+     * Hook to be implemented in subclasses. Called by the framework when all validation is done and datasources are
+     * going to be committed.
+     *
+     * @return true to continue, false to abort
+     */
+    @Override
+    protected boolean preCommit() {
+        showNotification(investorHoldingsDs.getItem().getTradeValue().toString());
+
+        return super.preCommit();
     }
 }

@@ -14,6 +14,9 @@
         <property name="holdings"
                   view="_minimal">
             <property name="tradeValue"/>
+            <property name="tradeType"/>
+            <property name="price"/>
+            <property name="tradeStatus"/>
         </property>
     </view>
     <view class="com.application.innova.entity.Stock"
@@ -33,8 +36,6 @@
     <view class="com.application.innova.entity.InvestorHoldings"
           extends="_local"
           name="investorHoldings-view">
-        <property name="investor"
-                  view="_minimal"/>
         <property name="security"
                   view="_minimal"/>
     </view>

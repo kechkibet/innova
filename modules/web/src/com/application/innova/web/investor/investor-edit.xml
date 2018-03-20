@@ -38,8 +38,10 @@
                            height="200px"
                            width="100%">
                         <actions>
-                            <action id="create"/>
-                            <action id="edit"/>
+                            <action id="create"
+                                    openType="DIALOG"/>
+                            <action id="edit"
+                                    openType="DIALOG"/>
                             <action id="remove"/>
                         </actions>
                         <columns>
@@ -65,13 +67,18 @@
                            height="200px"
                            width="100%">
                         <actions>
-                            <action id="create"/>
-                            <action id="edit"/>
+                            <action id="create"
+                                    openType="DIALOG"/>
+                            <action id="edit"
+                                    openType="DIALOG"/>
                             <action id="remove"/>
                         </actions>
                         <columns>
+                            <column id="tradeType"/>
                             <column id="security"/>
+                            <column id="price"/>
                             <column id="tradeValue"/>
+                            <column id="tradeStatus"/>
                         </columns>
                         <rows datasource="holdingsDs"/>
                         <buttonsPanel>

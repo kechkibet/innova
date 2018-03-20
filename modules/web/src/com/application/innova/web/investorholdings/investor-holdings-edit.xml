@@ -15,11 +15,18 @@
     <layout expand="windowActions"
             spacing="true">
         <fieldGroup id="fieldGroup"
-                    datasource="investorHoldingsDs">
+                    datasource="investorHoldingsDs"
+                    width="750px">
             <column width="250px">
-                <field property="investor"/>
-                <field property="security"/>
-                <field property="tradeValue"/>
+                <field property="security"
+                       width="500px"/>
+                <field property="price"
+                       required="true"/>
+                <field editable="false"
+                       property="tradeValue"/>
+                <field property="tradeType"/>
+                <field editable="false"
+                       property="tradeStatus"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

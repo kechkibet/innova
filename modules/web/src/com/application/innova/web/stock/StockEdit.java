@@ -25,7 +25,7 @@ public class StockEdit extends AbstractEditor<Stock> {
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
-        stockDs.addItemChangeListener(e -> {
+        stockDs.addItemPropertyChangeListener(e -> {
             Stock stock = e.getItem();
             stock.setName("Security Type: Stock, Qty"+stock.getQuantity()+" Company: "+stock.getCompany().getName());
         });

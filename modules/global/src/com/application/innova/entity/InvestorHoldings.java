@@ -21,14 +21,50 @@ public class InvestorHoldings extends StandardEntity {
     @JoinColumn(name = "INVESTOR_ID")
     protected Investor investor;
 
+    @Column(name = "TRADE_STATUS")
+    protected Integer tradeStatus;
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "SECURITY_ID")
     protected Security security;
 
+    @Column(name = "TRADE_TYPE")
+    protected Integer tradeType;
+
+    @Column(name = "PRICE")
+    protected Double price;
+
     @NotNull
     @Column(name = "TRADE_VALUE", nullable = false)
     protected Double tradeValue;
+
+    public void setTradeStatus(TradeStatus tradeStatus) {
+        this.tradeStatus = tradeStatus == null ? null : tradeStatus.getId();
+    }
+
+    public TradeStatus getTradeStatus() {
+        return tradeStatus == null ? null : TradeStatus.fromId(tradeStatus);
+    }
+
+
+    public void setTradeType(TradeType tradeType) {
+        this.tradeType = tradeType == null ? null : tradeType.getId();
+    }
+
+    public TradeType getTradeType() {
+        return tradeType == null ? null : TradeType.fromId(tradeType);
+    }
+
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
 
     public void setInvestor(Investor investor) {
         this.investor = investor;

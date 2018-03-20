@@ -46,7 +46,7 @@ dependencies {
 
 }
 
-def hsql = 'org.hsqldb:hsqldb:2.2.9'
+def mysql = 'mysql:mysql-connector-java:5.1.38'
 
 configure([globalModule, coreModule, guiModule, webModule]) {
     apply(plugin: 'java')
@@ -84,8 +84,8 @@ configure(coreModule) {
     dependencies {
         compile(globalModule)
         provided(servletApi)
-        jdbc(hsql)
-        testRuntime(hsql)
+        jdbc(mysql)
+        testRuntime(mysql)
 
     }
 
@@ -106,19 +106,21 @@ configure(coreModule) {
     }
 
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
-        dbms = 'hsql'
+        connectionParams = '?useSSL=false&allowMultiQueries=true'
+        dbms = 'mysql'
         host = 'localhost'
         dbName = 'innova'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbUser = 'root'
+        dbPassword = 'Kechpwd1*'
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
-        dbms = 'hsql'
+        connectionParams = '?useSSL=false&allowMultiQueries=true'
+        dbms = 'mysql'
         host = 'localhost'
         dbName = 'innova'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbUser = 'root'
+        dbPassword = 'Kechpwd1*'
     }
 }
 
