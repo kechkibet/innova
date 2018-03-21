@@ -29,4 +29,6 @@
             template="com/application/innova/web/investorholdings/investor-holdings-edit.xml"/>
     <screen id="innova$InvestorHoldings.browse"
             template="com/application/innova/web/investorholdings/investor-holdings-browse.xml"/>
+    <screen id="loginWindow"
+            template="com/application/innova/web/investorholdings/ext-loginWindow.xml"/>
 </screen-config>
