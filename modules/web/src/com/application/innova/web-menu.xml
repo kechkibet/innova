@@ -11,4 +11,7 @@
         <item screen="innova$TreasuryBond.browse"/>
         <item screen="innova$TreasuryBondsTypes.browse"/>
     </menu>
+    <menu id="tradeManagement">
+        <item screen="innova$InvestorHoldings.browse"/>
+    </menu>
 </menu-config>

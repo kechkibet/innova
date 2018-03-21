@@ -76,6 +76,7 @@
                         <columns>
                             <column id="tradeType"/>
                             <column id="security"/>
+                            <column id="quantity"/>
                             <column id="price"/>
                             <column id="tradeValue"/>
                             <column id="tradeStatus"/>

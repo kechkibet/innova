@@ -19,8 +19,6 @@
             <column width="250px">
                 <field property="name"
                        required="true"/>
-                <field property="quantity"
-                       required="true"/>
                 <field property="company"
                        required="true"/>
             </column>

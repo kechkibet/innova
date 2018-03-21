@@ -20,13 +20,14 @@
             <column width="250px">
                 <field property="security"
                        width="500px"/>
+                <field property="quantity"
+                       required="true"/>
                 <field property="price"
                        required="true"/>
                 <field editable="false"
                        property="tradeValue"/>
-                <field property="tradeType"/>
-                <field editable="false"
-                       property="tradeStatus"/>
+                <field property="tradeType"
+                       required="true"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

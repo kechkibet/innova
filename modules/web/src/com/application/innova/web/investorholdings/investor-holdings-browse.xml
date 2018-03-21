@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.application.innova.web.investorholdings.InvestorHoldingsBrowse"
+        focusComponent="table"
+        lookupComponent="table"
+        messagesPack="com.application.innova.web.investorholdings">
+    <dsContext>
+        <datasource id="investorHoldingsDs"
+                    class="com.application.innova.entity.InvestorHoldings"
+                    view="investorHoldings-view"/>
+        <groupDatasource id="investorHoldingsesDs"
+                         class="com.application.innova.entity.InvestorHoldings"
+                         view="investorHoldings-view">
+            <query>
+                <![CDATA[select e from innova$InvestorHoldings e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               reversePosition="true"
+               width="100%">
+            <vbox id="lookupBox"
+                  expand="table"
+                  height="100%"
+                  margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="table"
+                        datasource="investorHoldingsesDs">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%">
+                    <actions>
+                        <action id="generateTicket"
+                                caption="Generate Ticket"
+                                invoke="onGenerateTicket"
+                                trackSelection="true"/>
+                        <action id="settleOrder"
+                                caption="Settle Order"
+                                invoke="onSettleOrder"
+                                trackSelection="true"/>
+                        <action id="completeOrder"
+                                caption="Complete Order"
+                                invoke="onCompleteOrder"
+                                trackSelection="true"/>
+                    </actions>
+                    <columns>
+                        <column id="tradeStatus"/>
+                        <column id="security"/>
+                        <column id="tradeType"/>
+                        <column id="price"/>
+                        <column id="tradeValue"/>
+                        <column id="quantity"/>
+                    </columns>
+                    <rows datasource="investorHoldingsesDs"/>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="btnNextAction"
+                                action="table.generateTicket"/>
+                    </buttonsPanel>
+                </groupTable>
+            </vbox>
+            <vbox id="editBox"
+                  expand="fieldGroupBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <scrollBox id="fieldGroupBox">
+                    <fieldGroup id="fieldGroup"
+                                datasource="investorHoldingsDs">
+                        <column width="250px">
+                            <field property="tradeStatus"/>
+                            <field property="security"/>
+                            <field property="tradeType"/>
+                            <field property="price"/>
+                            <field property="tradeValue"/>
+                            <field property="quantity"/>
+                        </column>
+                    </fieldGroup>
+                </scrollBox>
+                <hbox id="actionsPane"
+                      spacing="true"
+                      visible="false">
+                    <button id="saveBtn"
+                            action="save"/>
+                    <button id="cancelBtn"
+                            action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

@@ -13,20 +13,10 @@ import javax.persistence.ManyToOne;
 public class Stock extends Security {
     private static final long serialVersionUID = 6522134134351005876L;
 
-    @Column(name = "QUANTITY")
-    protected Double quantity;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COMPANY_ID")
     protected ListedCompany company;
 
-    public Double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Double quantity) {
-        this.quantity = quantity;
-    }
 
 
     public void setCompany(ListedCompany company) {

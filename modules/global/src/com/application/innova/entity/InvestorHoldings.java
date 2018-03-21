@@ -32,12 +32,24 @@ public class InvestorHoldings extends StandardEntity {
     @Column(name = "TRADE_TYPE")
     protected Integer tradeType;
 
+    @Column(name = "QUANTITY")
+    protected Double quantity;
+
     @Column(name = "PRICE")
     protected Double price;
 
     @NotNull
     @Column(name = "TRADE_VALUE", nullable = false)
     protected Double tradeValue;
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getQuantity() {
+        return quantity;
+    }
+
 
     public void setTradeStatus(TradeStatus tradeStatus) {
         this.tradeStatus = tradeStatus == null ? null : tradeStatus.getId();

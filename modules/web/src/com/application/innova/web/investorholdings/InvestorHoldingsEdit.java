@@ -36,21 +36,23 @@ public class InvestorHoldingsEdit extends AbstractEditor<InvestorHoldings> {
             //set the default trade status here...
             investorHoldings.setTradeStatus(TradeStatus.Order_Received);
 
-            if (investorHoldings.getSecurity()!=null && investorHoldings.getPrice()!= null){
+            if (investorHoldings.getSecurity()!=null && investorHoldings.getPrice()!= null && investorHoldings.getQuantity()!=null){
 
                 if (investorHoldings.getSecurity() instanceof Stock) {
                     //Stock stock = (Stock) investorHoldings.getSecurity();
                     LoadContext<Stock> stockLoadContext = LoadContext.create(Stock.class).setId(investorHoldings.getSecurity().getId()).setView("_local");
 
                     Stock stock = dataManager.load(stockLoadContext);
-                    investorHoldings.setTradeValue(stock.getQuantity()*investorHoldings.getPrice());
+                    //stocks can be sold in units of one
+                    investorHoldings.setTradeValue(investorHoldings.getQuantity()*investorHoldings.getPrice());
                 }
                 if (investorHoldings.getSecurity() instanceof TreasuryBond) {
                     //TreasuryBond treasuryBond = (TreasuryBond) investorHoldings.getSecurity();
                     LoadContext<TreasuryBond> treasuryBondLoadContext = LoadContext.create(TreasuryBond.class).setId(investorHoldings.getSecurity().getId()).setView("_local");
 
                      TreasuryBond treasuryBond= dataManager.load(treasuryBondLoadContext);
-                    investorHoldings.setTradeValue(treasuryBond.getFaceValue()*investorHoldings.getPrice());
+                     //tbonds can only be sold  in qty of 100s so we have to mult by 100(takes care of sale and buy in one go)!
+                    investorHoldings.setTradeValue(treasuryBond.getFaceValue()*investorHoldings.getPrice()*investorHoldings.getQuantity()*100);
                 }
             }
         });
