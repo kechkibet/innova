@@ -34,7 +34,6 @@ create table INNOVA_SECURITY (
     BOND_TYPE_ID varchar(36),
     --
     -- from innova$Stock
-    QUANTITY double precision,
     COMPANY_ID varchar(36),
     --
     primary key (ID)
@@ -107,7 +106,11 @@ create table INNOVA_INVESTOR_HOLDINGS (
     DELETED_BY varchar(50),
     --
     INVESTOR_ID varchar(36) not null,
+    TRADE_STATUS integer,
     SECURITY_ID varchar(36) not null,
+    TRADE_TYPE integer,
+    QUANTITY double precision,
+    PRICE double precision,
     TRADE_VALUE double precision not null,
     --
     primary key (ID)
