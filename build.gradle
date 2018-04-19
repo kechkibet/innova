@@ -229,6 +229,7 @@ task jelasticDeployWar(type: CubaJelasticDeploy, dependsOn: jelasticBuildWar) {
 }
 
 task buildWar(type: CubaWarBuilding) {
+    logbackConfigurationFile = 'etc/war-logback.xml'
     coreContextXmlPath = 'modules/core/web/META-INF/war-context.xml'
     includeContextXml = true
     includeJdbcDriver = true

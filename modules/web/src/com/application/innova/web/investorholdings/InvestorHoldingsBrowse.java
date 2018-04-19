@@ -121,7 +121,7 @@ public class InvestorHoldingsBrowse extends EntityCombinedScreen {
                                 if (investorHoldings.getTradeType()== TradeType.Sale){
                                     //Check if investor has enough stocks to sell item
                                     Double stockBalance = getStockBalanceService.getStockBalance(investorHoldings.getInvestor().getId(),investorHoldings.getSecurity().getId());
-                                    if (stockBalance>=investorHoldings.getTradeValue()){
+                                    if (stockBalance>=investorHoldings.getQuantity()){
                                         //we are good here just add the cash transaction amount
                                         addCashDepositService.addCashDeposit(investorHoldings.getInvestor().getId(),"Deposit for trade id: "+ investorHoldings.getId(), investorHoldings.getTradeValue());
                                         investorHoldingsesDs.getItem().setTradeStatus(TradeStatus.Settled);
